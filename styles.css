@@ -24,7 +24,7 @@ body * {
   max-width: calc(100% - 20px);
   border: 8px solid rgb(75, 57, 18);
   border-radius: 20px;
-  background: rgb(38, 156, 8);
+  background: rgba(38, 165, 7, 0.945);
   margin: 0 auto;
   color: white;
   padding: 30px;
