@@ -3,7 +3,14 @@ window.addEventListener("DOMContentLoaded", function () {
 
   //deal btn start
   const dealBtn = document.querySelector("#deal-button");
-  dealBtn.addEventListener("click", (e) => {});
+  dealBtn.addEventListener("click", (e) => {
+    drawCard(playerHand);
+    drawCard(dealerHand);
+    drawCard(playerHand);
+    drawCard(dealerHand);
+
+    console.log(`images/${playerHand[0].rank}_of_${playerHand[0].suit}.png`);
+  });
   //deal btn end
 
   //hit btn start
@@ -38,30 +45,31 @@ window.addEventListener("DOMContentLoaded", function () {
   myDeck = buildDeck();
 
   //Get card image
-  function getCardImage(card) {
-    const cardImage = document.createElement("img");
+  // function getCardImage(card) {
+  //   const cardImage = document.createElement("img");
 
-    if (card.rank === 1) {
-      cardImage.setAttribute("src", `images/ace_of_${card.suits}.png`);
-    } else if (card.rank === 13) {
-      cardImage.setAttribute("src", `images/king_of_${card.suits}.png`);
-    } else if (card.rank === 12) {
-      cardImage.setAttribute("src", `images/queen_of_${card.suits}.png`);
-    } else if (card.rank === 11) {
-      cardImage.setAttribute("src", `images/jack_of_${card.suits}.png`);
-    } else {
-      cardImage.setAttribute("src", `images/${card.rank}_of_${card.suits}.png`);
-    }
-    return cardImage;
-  }
+  //   if (card.rank === 1) {
+  //     cardImage.setAttribute("src", `images/ace_of_${card.suits}.png`);
+  //   } else if (card.rank === 13) {
+  //     cardImage.setAttribute("src", `images/king_of_${card.suits}.png`);
+  //   } else if (card.rank === 12) {
+  //     cardImage.setAttribute("src", `images/queen_of_${card.suits}.png`);
+  //   } else if (card.rank === 11) {
+  //     cardImage.setAttribute("src", `images/jack_of_${card.suits}.png`);
+  //   } else {
+  //     cardImage.setAttribute("src", `images/${card.rank}_of_${card.suits}.png`);
+  //   }
+  //   return cardImage;
+  // }
 
   //Deal the Deck
   let playerHand = [];
   let dealerHand = [];
 
-  function dealCard() {
-    playerHand.push(myDeck.pop());
-    return playerHand;
-    console.log(playerHand[0]);
+  function drawCard(nextHand) {
+    console.log("you have drawn a card");
+    let drawnCard = myDeck.pop();
+    nextHand.push(drawnCard);
+    console.log(nextHand);
   }
 });
