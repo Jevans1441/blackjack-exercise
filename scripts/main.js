@@ -39,12 +39,17 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 //Build Deck
-function buildDeck() {
-  const suites = ["spades", "diamonds", "clubs", "hearts"];
-  const deck = [];
+let deck = [];
+const suits = ["hearts", "spades", "clubs", "diamonds"];
 
-  for (i = 1; i <= suites.length; i++) {
-    
+//makes suits
+for (i = 0; i < suits.length; i++) {
+  //makes rank
+  for (r = 1; r <= 13; r++) {
+    deck.push({
+      Rank: r,
+      Suit: suits[i],
+    });
   }
-  console.log(deck);
 }
+console.log(deck);
