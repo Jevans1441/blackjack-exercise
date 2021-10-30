@@ -3,53 +3,65 @@ window.addEventListener("DOMContentLoaded", function () {
 
   //deal btn start
   const dealBtn = document.querySelector("#deal-button");
-  dealBtn.addEventListener("click", (e) => {
-    // Add new card element
-    const dealerHand = document.querySelector("#dealer-hand");
-    const playerHand = document.querySelector("#player-hand");
-    const newCard = document.createElement("img");
-    const newCard2 = document.createElement("img");
-    newCard.src = "images/2_of_hearts.png";
-    newCard2.src = "images/3_of_hearts.png";
-    dealerHand.appendChild(newCard);
-    playerHand.appendChild(newCard2);
-  });
+  dealBtn.addEventListener("click", (e) => {});
   //deal btn end
 
   //hit btn start
   const hitBtn = document.querySelector("#hit-button");
-  hitBtn.addEventListener("click", (e) => {
-    const dealerHand = document.querySelector("#dealer-hand");
-    const playerHand = document.querySelector("#player-hand");
-    const newCard = document.createElement("img");
-    const newCard2 = document.createElement("img");
-    newCard.src = "images/2_of_hearts.png";
-    newCard2.src = "images/3_of_hearts.png";
-    dealerHand.appendChild(newCard);
-    playerHand.appendChild(newCard2);
-  });
+  hitBtn.addEventListener("click", (e) => {});
   //hit btn end
 
   //stand btn start
   const standBtn = document.querySelector("#stand-button");
-  standBtn.addEventListener("click", (e) => {
-    console.log("Stand");
-  });
+  standBtn.addEventListener("click", (e) => {});
+
   //stand btn end
-});
 
-//Build Deck
-let deck = [];
-const suits = ["hearts", "spades", "clubs", "diamonds"];
+  //Build Deck
+  function buildDeck() {
+    let deck = [];
+    const suits = ["hearts", "spades", "clubs", "diamonds"];
 
-//makes suits
-for (i = 0; i < suits.length; i++) {
-  //makes rank
-  for (r = 1; r <= 13; r++) {
-    deck.push({
-      Rank: r,
-      Suit: suits[i],
-    });
+    //makes suits
+    for (let i = 0; i < suits.length; i++) {
+      //makes rank
+      for (let r = 1; r <= 13; r++) {
+        const card = {
+          rank: r,
+          suit: suits[i],
+        };
+        deck.push(card);
+      }
+    }
+    return deck;
   }
-}
-console.log(deck);
+  myDeck = buildDeck();
+
+  //Get card image
+  function getCardImage(card) {
+    const cardImage = document.createElement("img");
+
+    if (card.rank === 1) {
+      cardImage.setAttribute("src", `images/ace_of_${card.suits}.png`);
+    } else if (card.rank === 13) {
+      cardImage.setAttribute("src", `images/king_of_${card.suits}.png`);
+    } else if (card.rank === 12) {
+      cardImage.setAttribute("src", `images/queen_of_${card.suits}.png`);
+    } else if (card.rank === 11) {
+      cardImage.setAttribute("src", `images/jack_of_${card.suits}.png`);
+    } else {
+      cardImage.setAttribute("src", `images/${card.rank}_of_${card.suits}.png`);
+    }
+    return cardImage;
+  }
+
+  //Deal the Deck
+  let playerHand = [];
+  let dealerHand = [];
+
+  function dealCard() {
+    playerHand.push(myDeck.pop());
+    return playerHand;
+    console.log(playerHand[0]);
+  }
+});
