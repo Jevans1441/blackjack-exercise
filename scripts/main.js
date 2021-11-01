@@ -8,8 +8,6 @@ window.addEventListener("DOMContentLoaded", function () {
     drawCard(dealerHand);
     drawCard(playerHand);
     drawCard(dealerHand);
-
-    console.log(`images/${playerHand[0].rank}_of_${playerHand[0].suit}.png`);
   });
   //deal btn end
 
@@ -25,6 +23,7 @@ window.addEventListener("DOMContentLoaded", function () {
   //stand btn end
 
   //Build Deck
+
   function buildDeck() {
     let deck = [];
     const suits = ["hearts", "spades", "clubs", "diamonds"];
@@ -39,28 +38,43 @@ window.addEventListener("DOMContentLoaded", function () {
         };
         deck.push(card);
       }
+      shuffle(deck);
     }
     return deck;
   }
   myDeck = buildDeck();
 
-  //Get card image
-  // function getCardImage(card) {
-  //   const cardImage = document.createElement("img");
+  //End Build Deck
 
-  //   if (card.rank === 1) {
-  //     cardImage.setAttribute("src", `images/ace_of_${card.suits}.png`);
-  //   } else if (card.rank === 13) {
-  //     cardImage.setAttribute("src", `images/king_of_${card.suits}.png`);
-  //   } else if (card.rank === 12) {
-  //     cardImage.setAttribute("src", `images/queen_of_${card.suits}.png`);
-  //   } else if (card.rank === 11) {
-  //     cardImage.setAttribute("src", `images/jack_of_${card.suits}.png`);
-  //   } else {
-  //     cardImage.setAttribute("src", `images/${card.rank}_of_${card.suits}.png`);
-  //   }
-  //   return cardImage;
-  // }
+  //Start Shuffle deck
+  function shuffle(myDeck) {
+    for (let i = myDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [myDeck[i], myDeck[j]] = [myDeck[j], myDeck[i]];
+    }
+  }
+  //End Shuffle Deck
+
+  // Get card image
+
+  function getCardImage(card) {
+    const cardImage = document.createElement("img");
+
+    if (card.rank === 1) {
+      cardImage.setAttribute("src", `images/ace_of_${card.suits}.png`);
+    } else if (card.rank === 13) {
+      cardImage.setAttribute("src", `images/king_of_${card.suits}.png`);
+    } else if (card.rank === 12) {
+      cardImage.setAttribute("src", `images/queen_of_${card.suits}.png`);
+    } else if (card.rank === 11) {
+      cardImage.setAttribute("src", `images/jack_of_${card.suits}.png`);
+    } else {
+      cardImage.setAttribute("src", `images/${card.rank}_of_${card.suits}.png`);
+    }
+    return cardImage;
+  }
+
+  //End Card Image
 
   //Deal the Deck
   let playerHand = [];
@@ -72,4 +86,5 @@ window.addEventListener("DOMContentLoaded", function () {
     nextHand.push(drawnCard);
     console.log(nextHand);
   }
+  //End of Deal the Deck
 });
