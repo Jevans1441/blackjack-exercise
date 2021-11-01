@@ -13,7 +13,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
   //hit btn start
   const hitBtn = document.querySelector("#hit-button");
-  hitBtn.addEventListener("click", (e) => {});
+  hitBtn.addEventListener("click", (e) => {
+    drawCard(playerHand);
+  });
   //hit btn end
 
   //stand btn start
